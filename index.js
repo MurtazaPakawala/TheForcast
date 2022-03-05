@@ -3,7 +3,18 @@ const app = express();
 const port = 8000;
 
 app.use(express.static("public"));
-
+app.use(express.json({ limit: "1mb" }));
 app.listen(port, () => {
   console.log(`server is up at the port ${port}`);
 });
+
+app.post(
+  "/api",
+  (req, res) => {
+    console.log(req.body);
+    res.send({ log: req.body.lon, lat: req.body.lat, status: "success" });
+  },
+  (err) => {
+    console.log("sorry can not receive the data");
+  }
+);
