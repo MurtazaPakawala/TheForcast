@@ -1,0 +1,14 @@
+{
+  "name": "the-forecast",
+  "version": "1.0.0",
+  "description": "In this project I will be using weather and air quality api to describe the forecast of the user location",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Murtaza Pakawala",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
