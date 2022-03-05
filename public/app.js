@@ -8,11 +8,12 @@ function get_loc() {
       const data = pos.coords;
       const lon = data.longitude;
       const lat = data.latitude;
+      const fav_color = document.querySelector("#fav-color").value;
       document.querySelector("#lat").textContent = data.latitude;
       document.querySelector("#log").textContent = data.longitude;
       // making the post request to the server
 
-      const send_data = { lon, lat };
+      const send_data = { lon, lat, fav_color };
       const options = {
         method: "POST",
         headers: {

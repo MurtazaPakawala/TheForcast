@@ -1,7 +1,10 @@
 const express = require("express");
+const Database = require("nedb");
 const app = express();
 const port = 8000;
 
+const db = new Database("Database.db");
+db.loadDatabase();
 app.use(express.static("public"));
 app.use(express.json({ limit: "1mb" }));
 app.listen(port, () => {
@@ -13,6 +16,9 @@ app.post(
   (req, res) => {
     console.log(req.body);
     res.send({ log: req.body.lon, lat: req.body.lat, status: "success" });
+    //adding the time stamp when did the data come
+    req.body.timestamp = Date.now();
+    db.insert(req.body);
   },
   (err) => {
     console.log("sorry can not receive the data");
