@@ -1,4 +1,5 @@
 const express = require("express");
+const { json } = require("express/lib/response");
 const Database = require("nedb");
 const app = express();
 const port = 8000;
@@ -11,6 +12,13 @@ app.listen(port, () => {
   console.log(`server is up at the port ${port}`);
 });
 
+app.get("/display", (req, res) => {
+  db.find({}, (err, data) => {
+    res.json(data);
+  });
+
+  //   res.json({ test: 132 });
+});
 app.post(
   "/api",
   (req, res) => {
